@@ -1,7 +1,7 @@
 # FCCP: Fine-Grained Cloud Phase Recognition Benchmark
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Paper](https://img.shields.io/badge/Paper-IEEE%20TCSVT%2FJournal-blue)](https://doi.org/)
+[![Paper](https://img.shields.io/badge/Paper-IEEE%20TGRS%2FJournal-blue)](https://doi.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-BaiduNetdisk-green)](https://pan.baidu.com/s/1zHpGDFkdLfCFIFMpQScyMQ?pwd=2026)
 
 This repository hosts the **FCCP (Fine-Grained Cloud Phase)** benchmark dataset, introduced in our paper: **"From Patch to Point: A Distance-Decay Attention Network for Fine-Grained Cloud Phase Recognition"**.
@@ -162,7 +162,7 @@ If you use the FCCP dataset or find our work helpful, please consider citing:
 @article{yao2026patchtopoint,
   title={From Patch to Point: A Distance-Decay Attention Network for Fine-Grained Cloud Phase Recognition},
   author={Yao, Yiming and Ma, Jianghong and Luo, Chuyao and Li, Xutao and Ye, Yunming},
-  journal={IEEE Transactions on Circuits and Systems for Video Technology (Submitted)},
+  journal={IEEE Transactions on Geoscience and Remote Sensing (Submitted)},
   year={2026}
 }
 ```
