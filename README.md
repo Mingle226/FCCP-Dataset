@@ -92,16 +92,18 @@ class FCCPDataset(Dataset):
         self.base_dir = os.path.join(base_dir, dataset_path)
         self.device = torch.device(device)
         
-        # 1. 简化文件获取逻辑
+        # 1. Simplify file retrieval logic
         if files_names is None:
             all_files = []
             for sub in ["1", "2", "3"]:
                 sub_path = os.path.join(self.base_dir, sub)
                 if os.path.exists(sub_path):
                     all_files.extend([os.path.join(sub, f) for f in os.listdir(sub_path) if f.endswith('.npz')])
+            
+            # Sort files to ensure consistency (skipping the first 2 chars which represent sub-dirs)
             all_files.sort(key=lambda x: x[2:])
             
-            # 2. 统一划分逻辑 (70/15/15)
+            # 2. Unified split logic (70/15/15 ratio)
             n = len(all_files)
             train_idx, valid_idx = int(n * 0.7), int(n * 0.85)
             
@@ -112,14 +114,14 @@ class FCCPDataset(Dataset):
             else:
                 self.files_names = all_files[valid_idx:]
             
-            # 抽样比例缩减
+            # Sampling ratio reduction
             if ratio < 1.0:
                 np.random.shuffle(self.files_names)
                 self.files_names = self.files_names[:int(len(self.files_names) * ratio)]
         else:
             self.files_names = files_names
 
-        # 3. 均值标准差：建议直接传入常数，避免在线计算
+        # 3. Mean and Std: Recommended to pass constants directly to avoid online calculation
         self.means = torch.tensor(means).view(14, 1, 1) if means is not None else None
         self.stds = torch.tensor(stds).view(14, 1, 1) if stds is not None else None
 
@@ -132,25 +134,25 @@ class FCCPDataset(Dataset):
             image = torch.from_numpy(data['fy4a_data']).float() # (14, H, W)
             label = torch.from_numpy(data['cloudPhase']).long()
 
-        # 标准化
+        # Normalization
         if self.means is not None:
             image = (image - self.means) / self.stds
 
-        # 4. 向量化计算亮温差 (BTD)
-        # 索引对应关系: btd12_13(11-12), btd7_12(6-11), btd11_12(10-11), btd9_12(8-11), btd5_6(4-5)
+        # 4. Vectorized calculation of Brightness Temperature Difference (BTD)
+        # Index mappings: btd12_13(11-12), btd7_12(6-11), btd11_12(10-11), btd9_12(8-11), btd5_6(4-5)
         indices_a = [11, 6, 10, 8, 4]
         indices_b = [12, 11, 11, 11, 5]
         btd = image[indices_a] - image[indices_b] # (5, H, W)
 
-        # 5. 中心点通道
+        # 5. Center point channel
         C, H, W = image.shape
         center_channel = torch.zeros((1, H, W))
         center_channel[0, H // 2, W // 2] = 1.0
 
-        # 合并所有通道 (14 + 5 + 1 = 20)
+        # Concatenate all channels (14 + 5 + 1 = 20)
         image = torch.cat([image, btd, center_channel], dim=0)
         
-        # 标签处理 (假设原始标签从1开始)
+        # Label processing (assuming original labels start from 1, shifting to 0-indexed)
         return image.to(self.device), (label - 1).to(self.device)
 ```
 
