@@ -2,7 +2,7 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Paper](https://img.shields.io/badge/Paper-IEEE%20TGRS%2FJournal-blue)](https://doi.org/)
-[![Dataset](https://img.shields.io/badge/Dataset-BaiduNetdisk-green)](https://pan.baidu.com/s/1zHpGDFkdLfCFIFMpQScyMQ?pwd=2026)
+[![Dataset](https://img.shields.io/badge/Dataset-Google%20Drive-green)](https://drive.google.com/drive/folders/1U8WTLafwNovKXkT5u3EcWj7_8gwTqSez?usp=drive_link)
 
 This repository hosts the **FCCP (Fine-Grained Cloud Phase)** benchmark dataset, introduced in our paper: **"From Patch to Point: A Distance-Decay Attention Network for Fine-Grained Cloud Phase Recognition"**.
 
@@ -32,6 +32,14 @@ The dataset is organized into folders representing the physical cloud phase cate
 > **Note:** The folder names `1`, `2`, `3` correspond to the raw labels from CloudSat. In typical machine learning setups (0-indexed), these map to 0 (Ice), 1 (Mixed), and 2 (Water).
 
 ---
+
+## 📥 Data Access
+
+The FCCP dataset is publicly available. You can download the complete `.npz` archive from either of the following platforms:
+
+- **[Google Drive (Recommended)](https://drive.google.com/drive/folders/1U8WTLafwNovKXkT5u3EcWj7_8gwTqSez?usp=drive_link)**
+
+> **Notice:** The dataset is approximately 10.5GB in total. Please ensure you have sufficient storage space before downloading.
 
 ## 📁 File Organization
 
