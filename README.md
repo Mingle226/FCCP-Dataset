@@ -38,6 +38,7 @@ The dataset is organized into folders representing the physical cloud phase cate
 The FCCP dataset is publicly available. You can download the complete `.npz` archive from either of the following platforms:
 
 - **[Google Drive (Recommended)](https://drive.google.com/drive/folders/1U8WTLafwNovKXkT5u3EcWj7_8gwTqSez?usp=drive_link)**
+- **[Baidu Netdisk](https://pan.baidu.com/s/1zHpGDFkdLfCFIFMpQScyMQ?pwd=2026)** (Extraction code: `2026`)
 
 > **Notice:** The dataset is approximately 10.5GB in total. Please ensure you have sufficient storage space before downloading.
 
